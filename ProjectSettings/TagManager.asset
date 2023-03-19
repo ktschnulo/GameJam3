@@ -7,6 +7,11 @@ TagManager:
   - Ground
   - Reach
   - Torch01
+  - Torch02
+  - Torch03
+  - Torch04
+  - Torch05
+  - Torch06
   layers:
   - Default
   - TransparentFX
