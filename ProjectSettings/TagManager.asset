@@ -12,6 +12,7 @@ TagManager:
   - Torch04
   - Torch05
   - Torch06
+  - Lever
   layers:
   - Default
   - TransparentFX

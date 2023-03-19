@@ -22,6 +22,10 @@ public class Interact : MonoBehaviour
     public bool inReachTorch05;
     public bool inReachTorch06;
 
+    //lever
+    public GameObject leverOff;
+    public GameObject leverOn;
+    public bool inReachLever;
 
     void Start()
     {
@@ -35,6 +39,7 @@ public class Interact : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        //puzzle 1
         if (gameController.GetComponent<GameController>().puzzle01 == false)
         {
             if (other.gameObject.tag == "Torch01")
@@ -68,10 +73,21 @@ public class Interact : MonoBehaviour
                 torchInteractText.SetActive(true);
             }
         }
+
+        //puzzle 3
+        if (gameController.GetComponent<GameController>().puzzle02 == false)
+        {
+            if (other.gameObject.tag == "Lever")
+            {
+                inReachLever = true;
+                torchInteractText.SetActive(true);
+            }
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
+        //puzzle 1
         if (other.gameObject.tag == "Torch01")
         {
             inReachTorch01 = false;
@@ -102,12 +118,19 @@ public class Interact : MonoBehaviour
             inReachTorch06 = false;
             torchInteractText.SetActive(false);
         }
+        //puzzle 3
+        else if (other.gameObject.tag == "Lever")
+        {
+            inReachLever = false;
+            torchInteractText.SetActive(false);
+        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
+            //puzzle 1
             if (inReachTorch01)
             {
                 if (torch01.activeSelf == true)
@@ -172,6 +195,16 @@ public class Interact : MonoBehaviour
                 else
                 {
                     torch06.SetActive(true);
+                }
+            }
+            //puzzle 3
+            else if (inReachLever)
+            {
+                if (leverOff.activeSelf == true)
+                {
+                    torchInteractText.SetActive(false);
+                    leverOff.SetActive(false);
+                    leverOn.SetActive(true);
                 }
             }
         }
