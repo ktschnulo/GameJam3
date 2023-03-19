@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Reach
+  - Torch01
   layers:
   - Default
   - TransparentFX
