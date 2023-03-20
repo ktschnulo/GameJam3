@@ -10,6 +10,17 @@ public class Interact : MonoBehaviour
     //game controller
     public GameObject gameController;
 
+    [Header("Audio")]
+    //audio
+    public AudioSource torchTurnOnSFX;
+    public AudioSource torchTurnOffSFX;
+    public AudioSource flipSwitchSFX;
+    public AudioSource moveStatueGoodSFX;
+    public AudioSource moveStatueBadSFX;
+    public AudioSource errorSFX;
+    public AudioSource ladderClimbSFX;
+
+    [Header("Ladders")]
     //ladders
     public GameObject ladderUpInteractText;
     public bool inReachLadderUp01;
@@ -290,14 +301,17 @@ public class Interact : MonoBehaviour
             //ladders
             if (inReachLadderUp01)
             {
+                ladderClimbSFX.Play();
                 playerObj.transform.position = new Vector3(2.5f, 152f, transform.position.z - 6);
             }
             else if (inReachLadderUp02)
             {
+                ladderClimbSFX.Play();
                 playerObj.transform.position = new Vector3(2.5f, 157f, transform.position.z - 6);
             }
             else if (inReachLadderUp03)
             {
+                ladderClimbSFX.Play();
                 playerObj.transform.position = new Vector3(transform.position.x + 6, 157f, transform.position.z);
             }
 
@@ -308,10 +322,12 @@ public class Interact : MonoBehaviour
                 {
                     if (torch01.activeSelf == true)
                     {
+                        torchTurnOffSFX.Play();
                         torch01.SetActive(false);
                     }
                     else
                     {
+                        torchTurnOnSFX.Play();
                         torch01.SetActive(true);
                     }
                 }
@@ -319,10 +335,12 @@ public class Interact : MonoBehaviour
                 {
                     if (torch02.activeSelf == true)
                     {
+                        torchTurnOffSFX.Play();
                         torch02.SetActive(false);
                     }
                     else
                     {
+                        torchTurnOnSFX.Play();
                         torch02.SetActive(true);
                     }
                 }
@@ -330,10 +348,12 @@ public class Interact : MonoBehaviour
                 {
                     if (torch03.activeSelf == true)
                     {
+                        torchTurnOffSFX.Play();
                         torch03.SetActive(false);
                     }
                     else
                     {
+                        torchTurnOnSFX.Play();
                         torch03.SetActive(true);
                     }
                 }
@@ -341,10 +361,12 @@ public class Interact : MonoBehaviour
                 {
                     if (torch04.activeSelf == true)
                     {
+                        torchTurnOffSFX.Play();
                         torch04.SetActive(false);
                     }
                     else
                     {
+                        torchTurnOnSFX.Play();
                         torch04.SetActive(true);
                     }
                 }
@@ -352,10 +374,12 @@ public class Interact : MonoBehaviour
                 {
                     if (torch05.activeSelf == true)
                     {
+                        torchTurnOffSFX.Play();
                         torch05.SetActive(false);
                     }
                     else
                     {
+                        torchTurnOnSFX.Play();
                         torch05.SetActive(true);
                     }
                 }
@@ -363,10 +387,12 @@ public class Interact : MonoBehaviour
                 {
                     if (torch06.activeSelf == true)
                     {
+                        torchTurnOffSFX.Play();
                         torch06.SetActive(false);
                     }
                     else
                     {
+                        torchTurnOnSFX.Play();
                         torch06.SetActive(true);
                     }
                 }
@@ -382,17 +408,20 @@ public class Interact : MonoBehaviour
                         statuePosition == 7 || statuePosition == 8 || statuePosition == 9 || statuePosition == 10 ||
                         statuePosition == 12)
                     {
+                        moveStatueGoodSFX.Play();
                         statuePosition = statuePosition + 4;
                         statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z - 5);
                     }
                     //cannot move up due to edge
                     else if (statuePosition == 13 || statuePosition == 14 || statuePosition == 15 || statuePosition == 16)
                     {
+                        moveStatueBadSFX.Play();
                         statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
                     }
                     //hit an obstacle, so reset
                     else
                     {
+                        errorSFX.Play();
                         statuePosition = 2;
                         statue.transform.position = new Vector3(5, 0, 10);
                     }
@@ -404,17 +433,20 @@ public class Interact : MonoBehaviour
                         statuePosition == 11 || statuePosition == 12 || statuePosition == 13 || statuePosition == 14 ||
                         statuePosition == 16)
                     {
+                        moveStatueGoodSFX.Play();
                         statuePosition = statuePosition - 4;
                         statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z + 5);
                     }
                     //cannot move down due to edge
                     else if (statuePosition == 1 || statuePosition == 2 || statuePosition == 3 || statuePosition == 4)
                     {
+                        moveStatueBadSFX.Play();
                         statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
                     }
                     //hit an obstacle, so reset
                     else
                     {
+                        errorSFX.Play();
                         statuePosition = 2;
                         statue.transform.position = new Vector3(5, 0, 10);
                     }
@@ -425,17 +457,20 @@ public class Interact : MonoBehaviour
                     if (statuePosition == 3 || statuePosition == 4 || statuePosition == 6 || statuePosition == 8 ||
                         statuePosition == 10 || statuePosition == 11 || statuePosition == 16)
                     {
+                        moveStatueGoodSFX.Play();
                         statuePosition = statuePosition - 1;
                         statue.transform.position = new Vector3(statue.transform.position.x + 5, 0, statue.transform.position.z);
                     }
                     //cannot move left due to edge
                     else if (statuePosition == 1 || statuePosition == 5 || statuePosition == 9 || statuePosition == 13)
                     {
+                        moveStatueBadSFX.Play();
                         statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
                     }
                     //hit an obstacle, so reset
                     else
                     {
+                        errorSFX.Play();
                         statuePosition = 2;
                         statue.transform.position = new Vector3(5, 0, 10);
                     }
@@ -446,17 +481,20 @@ public class Interact : MonoBehaviour
                     if (statuePosition == 2 || statuePosition == 3 || statuePosition == 5 || statuePosition == 7 ||
                         statuePosition == 9 || statuePosition == 10 || statuePosition == 15)
                     {
+                        moveStatueGoodSFX.Play();
                         statuePosition = statuePosition + 1;
                         statue.transform.position = new Vector3(statue.transform.position.x - 5, 0, statue.transform.position.z);
                     }
                     //cannot move right due to edge
                     else if (statuePosition == 4 || statuePosition == 8 || statuePosition == 12 || statuePosition == 16)
                     {
+                        moveStatueBadSFX.Play();
                         statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
                     }
                     //hit an obstacle, so reset
                     else
                     {
+                        errorSFX.Play();
                         statuePosition = 2;
                         statue.transform.position = new Vector3(5, 0, 10);
                     }
@@ -479,6 +517,7 @@ public class Interact : MonoBehaviour
             {
                 if (inReachSwitch01)
                 {
+                    flipSwitchSFX.Play();
                     //move left
                     if (arrowLeftPosition == 1)
                     {
@@ -533,6 +572,7 @@ public class Interact : MonoBehaviour
                 }
                 else if (inReachSwitch02)
                 {
+                    flipSwitchSFX.Play();
                     //move right
                     if (arrowRightPosition == 1)
                     {

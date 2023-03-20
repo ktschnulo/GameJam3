@@ -6,6 +6,11 @@ public class PlayerSwap : MonoBehaviour
 {
     public string currRealm = "Dream";
 
+    //audio 
+    public AudioSource nmMusic;
+    public AudioSource drMusic;
+
+    //pos
     public float xpos;
     public float ypos;
     public float zpos;
@@ -35,11 +40,15 @@ public class PlayerSwap : MonoBehaviour
                     transform.position = new Vector3(transform.position.x, transform.position.y - 149, transform.position.z);
                 }
                 currRealm = "Nightmare";
+                nmMusic.Play();
+                drMusic.Pause();
             }
             else if (currRealm.Equals("Nightmare"))
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y + 151, transform.position.z);
                 currRealm = "Dream";
+                drMusic.Play();
+                nmMusic.Pause();
             }
         }
         else if (Input.GetKeyDown(KeyCode.R))

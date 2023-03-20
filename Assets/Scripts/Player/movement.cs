@@ -83,6 +83,7 @@ public class movement : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
 
         }
+        
     }
 
     private void SpeedControl()

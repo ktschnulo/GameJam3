@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public GameObject player;
+    public GameObject completedStatue_dr;
+    public GameObject completedStatue_nm;
+    public GameObject completedLight_dr;
+    public GameObject completedLight_nm;
+
+    //audio 
+    public AudioSource puzzleFinishSFX;
+
     //puzzles
     public bool puzzle01 = false;
     public bool puzzle02 = false;
     public bool puzzle03 = false;
     public bool puzzle04 = false;
+    public bool completed = false;
 
+    public GameObject completedText;
     public GameObject interactText;
     public GameObject runeInteractText;
 
@@ -62,11 +73,13 @@ public class GameController : MonoBehaviour
             torch03.activeSelf == false && torch04.activeSelf == false &&
             torch05.activeSelf == true && torch06.activeSelf == true)
         {
+            
             puzzle01 = true;
             brazier01_nm.SetActive(true);
             brazier01_dr.SetActive(true);
             if (textOff01 == false)
             {
+                puzzleFinishSFX.Play();
                 interactText.SetActive(false);
                 textOff01 = true;
             }
@@ -80,6 +93,7 @@ public class GameController : MonoBehaviour
             brazier02_dr.SetActive(true);
             if (textOff02 == false)
             {
+                puzzleFinishSFX.Play();
                 runeInteractText.SetActive(false);
                 textOff02 = true;
             }
@@ -93,6 +107,7 @@ public class GameController : MonoBehaviour
             brazier03_dr.SetActive(true);
             if (textOff03 == false)
             {
+                puzzleFinishSFX.Play();
                 interactText.SetActive(false);
                 textOff03 = true;
             }
@@ -106,8 +121,25 @@ public class GameController : MonoBehaviour
             brazier04_dr.SetActive(true);
             if (textOff04 == false)
             {
+                puzzleFinishSFX.Play();
                 interactText.SetActive(false);
                 textOff04 = true;
+            }
+        }
+
+        if (puzzle01 == true && puzzle02 == true && puzzle03 == true && puzzle04 == true)
+        {
+            completedStatue_dr.transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
+            completedStatue_nm.transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
+            if (completed == false)
+            {
+                completed = true;
+                completedText.SetActive(true);
+                completedLight_dr.SetActive(true);
+                completedLight_nm.SetActive(true);
+                player.transform.position = new Vector3(2.5f, 148f, 67.5f);
+                completedStatue_dr.transform.position = new Vector3(completedStatue_dr.transform.position.x, completedStatue_dr.transform.position.y + 1, completedStatue_dr.transform.position.z);
+                completedStatue_nm.transform.position = new Vector3(completedStatue_nm.transform.position.x, completedStatue_nm.transform.position.y + 1, completedStatue_nm.transform.position.z);
             }
         }
     }
