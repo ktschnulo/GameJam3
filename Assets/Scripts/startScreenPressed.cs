@@ -9,6 +9,7 @@ using TMPro;
     public Material nightBox;
     public GameObject fireObj;
     public GameObject lightObj;
+    public GameObject sceneLight;
     public GameObject startBtn;
     public TextMeshProUGUI title;
     public TextMeshProUGUI startTxt;
@@ -37,6 +38,7 @@ using TMPro;
 
                 fireObj.SetActive(true);
                 lightObj.SetActive(true);
+                sceneLight.SetActive(false);
                 startBtn.SetActive(true);
                 active = true;
             }
@@ -48,6 +50,7 @@ using TMPro;
 
                 fireObj.SetActive(false);
                 lightObj.SetActive(false);
+                sceneLight.SetActive(true);
                 active = false;
             }
         }
