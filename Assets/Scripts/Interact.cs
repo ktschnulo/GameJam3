@@ -16,6 +16,7 @@ public class Interact : MonoBehaviour
     public bool inReachLadderUp02;
     public bool inReachLadderUp03;
 
+    [Header("Puzzle 1")]
     //torches
     public GameObject torchInteractText;
     public GameObject torch01;
@@ -31,6 +32,7 @@ public class Interact : MonoBehaviour
     public bool inReachTorch05;
     public bool inReachTorch06;
 
+    [Header("Puzzle 2")]
     //runes
     public GameObject statue;
     public int statuePosition;
@@ -40,10 +42,37 @@ public class Interact : MonoBehaviour
     public bool inReachRuneLeft;
     public bool inReachRuneRight;
 
+    [Header("Puzzle 3")]
     //lever
     public GameObject leverOff;
     public GameObject leverOn;
     public bool inReachLever;
+
+    [Header("Puzzle 4")]
+    //switches
+    public GameObject switch01;
+    public GameObject switch02;
+    public bool inReachSwitch01;
+    public bool inReachSwitch02;
+
+    //windmills
+    public int arrowLeftPosition = 1;
+    public GameObject arrowLeft01;
+    public GameObject arrowLeft02;
+    public GameObject arrowLeft03;
+    public GameObject arrowLeft04;
+
+    public int arrowMiddlePosition = 2;
+    public GameObject arrowMiddle01;
+    public GameObject arrowMiddle02;
+    public GameObject arrowMiddle03;
+    public GameObject arrowMiddle04;
+
+    public int arrowRightPosition = 3;
+    public GameObject arrowRight01;
+    public GameObject arrowRight02;
+    public GameObject arrowRight03;
+    public GameObject arrowRight04;
 
     void Start()
     {
@@ -144,6 +173,21 @@ public class Interact : MonoBehaviour
                 torchInteractText.SetActive(true);
             }
         }
+
+        //puzzle 4
+        if (gameController.GetComponent<GameController>().puzzle04 == false)
+        {
+            if (other.gameObject.tag == "Switch01")
+            {
+                inReachSwitch01 = true;
+                torchInteractText.SetActive(true);
+            }
+            else if (other.gameObject.tag == "Switch02")
+            {
+                inReachSwitch02 = true;
+                torchInteractText.SetActive(true);
+            }
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -225,6 +269,18 @@ public class Interact : MonoBehaviour
             inReachLever = false;
             torchInteractText.SetActive(false);
         }
+
+        //puzzle 4
+        else if (other.gameObject.tag == "Switch01")
+        {
+            inReachSwitch01 = false;
+            torchInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "Switch02")
+        {
+            inReachSwitch02 = false;
+            torchInteractText.SetActive(false);
+        }
     }
 
     void Update()
@@ -246,169 +302,288 @@ public class Interact : MonoBehaviour
             }
 
             //puzzle 1
-            else if (inReachTorch01)
+            if (gameController.GetComponent<GameController>().puzzle01 == false)
             {
-                if (torch01.activeSelf == true)
+                if (inReachTorch01)
                 {
-                    torch01.SetActive(false);
+                    if (torch01.activeSelf == true)
+                    {
+                        torch01.SetActive(false);
+                    }
+                    else
+                    {
+                        torch01.SetActive(true);
+                    }
                 }
-                else
+                else if (inReachTorch02)
                 {
-                    torch01.SetActive(true);
+                    if (torch02.activeSelf == true)
+                    {
+                        torch02.SetActive(false);
+                    }
+                    else
+                    {
+                        torch02.SetActive(true);
+                    }
                 }
-            }
-            else if (inReachTorch02)
-            {
-                if (torch02.activeSelf == true)
+                else if (inReachTorch03)
                 {
-                    torch02.SetActive(false);
+                    if (torch03.activeSelf == true)
+                    {
+                        torch03.SetActive(false);
+                    }
+                    else
+                    {
+                        torch03.SetActive(true);
+                    }
                 }
-                else
+                else if (inReachTorch04)
                 {
-                    torch02.SetActive(true);
+                    if (torch04.activeSelf == true)
+                    {
+                        torch04.SetActive(false);
+                    }
+                    else
+                    {
+                        torch04.SetActive(true);
+                    }
                 }
-            }
-            else if (inReachTorch03)
-            {
-                if (torch03.activeSelf == true)
+                else if (inReachTorch05)
                 {
-                    torch03.SetActive(false);
+                    if (torch05.activeSelf == true)
+                    {
+                        torch05.SetActive(false);
+                    }
+                    else
+                    {
+                        torch05.SetActive(true);
+                    }
                 }
-                else
+                else if (inReachTorch06)
                 {
-                    torch03.SetActive(true);
-                }
-            }
-            else if (inReachTorch04)
-            {
-                if (torch04.activeSelf == true)
-                {
-                    torch04.SetActive(false);
-                }
-                else
-                {
-                    torch04.SetActive(true);
-                }
-            }
-            else if (inReachTorch05)
-            {
-                if (torch05.activeSelf == true)
-                {
-                    torch05.SetActive(false);
-                }
-                else
-                {
-                    torch05.SetActive(true);
-                }
-            }
-            else if (inReachTorch06)
-            {
-                if (torch06.activeSelf == true)
-                {
-                    torch06.SetActive(false);
-                }
-                else
-                {
-                    torch06.SetActive(true);
+                    if (torch06.activeSelf == true)
+                    {
+                        torch06.SetActive(false);
+                    }
+                    else
+                    {
+                        torch06.SetActive(true);
+                    }
                 }
             }
 
             //puzzle 2
-            else if (inReachRuneUp)
+            if (gameController.GetComponent<GameController>().puzzle02 == false)
             {
-                //can move up
-                if (statuePosition == 1 || statuePosition == 2 || statuePosition == 4 || statuePosition == 6 ||
-                    statuePosition == 7 || statuePosition == 8 || statuePosition == 9 || statuePosition == 10 ||
-                    statuePosition == 12)
+                if (inReachRuneUp)
                 {
-                    statuePosition = statuePosition + 4;
-                    statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z - 5);
+                    //can move up
+                    if (statuePosition == 1 || statuePosition == 2 || statuePosition == 4 || statuePosition == 6 ||
+                        statuePosition == 7 || statuePosition == 8 || statuePosition == 9 || statuePosition == 10 ||
+                        statuePosition == 12)
+                    {
+                        statuePosition = statuePosition + 4;
+                        statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z - 5);
+                    }
+                    //cannot move up due to edge
+                    else if (statuePosition == 13 || statuePosition == 14 || statuePosition == 15 || statuePosition == 16)
+                    {
+                        statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
+                    }
+                    //hit an obstacle, so reset
+                    else
+                    {
+                        statuePosition = 2;
+                        statue.transform.position = new Vector3(5, 0, 10);
+                    }
                 }
-                //cannot move up due to edge
-                else if (statuePosition == 13 || statuePosition == 14 || statuePosition == 15 || statuePosition == 16)
+                else if (inReachRuneDown)
                 {
-                    statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
+                    //can move down
+                    if (statuePosition == 5 || statuePosition == 6 || statuePosition == 8 || statuePosition == 10 ||
+                        statuePosition == 11 || statuePosition == 12 || statuePosition == 13 || statuePosition == 14 ||
+                        statuePosition == 16)
+                    {
+                        statuePosition = statuePosition - 4;
+                        statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z + 5);
+                    }
+                    //cannot move down due to edge
+                    else if (statuePosition == 1 || statuePosition == 2 || statuePosition == 3 || statuePosition == 4)
+                    {
+                        statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
+                    }
+                    //hit an obstacle, so reset
+                    else
+                    {
+                        statuePosition = 2;
+                        statue.transform.position = new Vector3(5, 0, 10);
+                    }
                 }
-                //hit an obstacle, so reset
-                else
+                else if (inReachRuneLeft)
                 {
-                    statuePosition = 2;
-                    statue.transform.position = new Vector3(5, 0, 10);
+                    //can move left
+                    if (statuePosition == 3 || statuePosition == 4 || statuePosition == 6 || statuePosition == 8 ||
+                        statuePosition == 10 || statuePosition == 11 || statuePosition == 16)
+                    {
+                        statuePosition = statuePosition - 1;
+                        statue.transform.position = new Vector3(statue.transform.position.x + 5, 0, statue.transform.position.z);
+                    }
+                    //cannot move left due to edge
+                    else if (statuePosition == 1 || statuePosition == 5 || statuePosition == 9 || statuePosition == 13)
+                    {
+                        statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
+                    }
+                    //hit an obstacle, so reset
+                    else
+                    {
+                        statuePosition = 2;
+                        statue.transform.position = new Vector3(5, 0, 10);
+                    }
                 }
-            }
-            else if (inReachRuneDown)
-            {
-                //can move down
-                if (statuePosition == 5 || statuePosition == 6 || statuePosition == 8 || statuePosition == 10 ||
-                    statuePosition == 11 || statuePosition == 12 || statuePosition == 13 || statuePosition == 14 || 
-                    statuePosition == 16)
+                else if (inReachRuneRight)
                 {
-                    statuePosition = statuePosition - 4;
-                    statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z + 5);
-                }
-                //cannot move down due to edge
-                else if (statuePosition == 1 || statuePosition == 2 || statuePosition == 3 || statuePosition == 4)
-                {
-                    statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
-                }
-                //hit an obstacle, so reset
-                else
-                {
-                    statuePosition = 2;
-                    statue.transform.position = new Vector3(5, 0, 10);
-                }
-            }
-            else if (inReachRuneLeft)
-            {
-                //can move left
-                if (statuePosition == 3 || statuePosition == 4 || statuePosition == 6 || statuePosition == 8 || 
-                    statuePosition == 10 || statuePosition == 11 || statuePosition == 16)
-                {
-                    statuePosition = statuePosition - 1;
-                    statue.transform.position = new Vector3(statue.transform.position.x + 5, 0, statue.transform.position.z);
-                }
-                //cannot move left due to edge
-                else if (statuePosition == 1 || statuePosition == 5 || statuePosition == 9 || statuePosition == 13)
-                {
-                    statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
-                }
-                //hit an obstacle, so reset
-                else
-                {
-                    statuePosition = 2;
-                    statue.transform.position = new Vector3(5, 0, 10);
-                }
-            }
-            else if (inReachRuneRight)
-            {
-                //can move right
-                if (statuePosition == 2 || statuePosition == 3 || statuePosition == 5 || statuePosition == 7 ||
-                    statuePosition == 9 || statuePosition == 10 || statuePosition == 15)
-                {
-                    statuePosition = statuePosition + 1;
-                    statue.transform.position = new Vector3(statue.transform.position.x - 5, 0, statue.transform.position.z);
-                }
-                //cannot move right due to edge
-                else if (statuePosition == 4 || statuePosition == 8 || statuePosition == 12 || statuePosition == 16)
-                {
-                    statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
-                }
-                //hit an obstacle, so reset
-                else
-                {
-                    statuePosition = 2;
-                    statue.transform.position = new Vector3(5, 0, 10);
+                    //can move right
+                    if (statuePosition == 2 || statuePosition == 3 || statuePosition == 5 || statuePosition == 7 ||
+                        statuePosition == 9 || statuePosition == 10 || statuePosition == 15)
+                    {
+                        statuePosition = statuePosition + 1;
+                        statue.transform.position = new Vector3(statue.transform.position.x - 5, 0, statue.transform.position.z);
+                    }
+                    //cannot move right due to edge
+                    else if (statuePosition == 4 || statuePosition == 8 || statuePosition == 12 || statuePosition == 16)
+                    {
+                        statue.transform.position = new Vector3(statue.transform.position.x, 0, statue.transform.position.z);
+                    }
+                    //hit an obstacle, so reset
+                    else
+                    {
+                        statuePosition = 2;
+                        statue.transform.position = new Vector3(5, 0, 10);
+                    }
                 }
             }
 
             //puzzle 3
-            else if (inReachLever)
+            if (gameController.GetComponent<GameController>().puzzle03 == false)
             {
-                if (leverOff.activeSelf == true)
+                if (inReachLever && leverOff.activeSelf == true)
                 {
                     torchInteractText.SetActive(false);
                     leverOff.SetActive(false);
                     leverOn.SetActive(true);
+                }
+            }
+
+            //puzzle 4
+            if (gameController.GetComponent<GameController>().puzzle03 == false)
+            {
+                if (inReachSwitch01)
+                {
+                    //move left
+                    if (arrowLeftPosition == 1)
+                    {
+                        arrowLeft01.SetActive(false);
+                        arrowLeft02.SetActive(true);
+                        arrowLeftPosition = 2;
+                    }
+                    else if (arrowLeftPosition == 2)
+                    {
+                        arrowLeft02.SetActive(false);
+                        arrowLeft03.SetActive(true);
+                        arrowLeftPosition = 3;
+                    }
+                    else if (arrowLeftPosition == 3)
+                    {
+                        arrowLeft03.SetActive(false);
+                        arrowLeft04.SetActive(true);
+                        arrowLeftPosition = 4;
+                    }
+                    else if (arrowLeftPosition == 4)
+                    {
+                        arrowLeft04.SetActive(false);
+                        arrowLeft01.SetActive(true);
+                        arrowLeftPosition = 1;
+                    }
+
+                    //move middle
+                    if (arrowMiddlePosition == 1)
+                    {
+                        arrowMiddle01.SetActive(false);
+                        arrowMiddle02.SetActive(true);
+                        arrowMiddlePosition = 2;
+                    }
+                    else if (arrowMiddlePosition == 2)
+                    {
+                        arrowMiddle02.SetActive(false);
+                        arrowMiddle03.SetActive(true);
+                        arrowMiddlePosition = 3;
+                    }
+                    else if (arrowMiddlePosition == 3)
+                    {
+                        arrowMiddle03.SetActive(false);
+                        arrowMiddle04.SetActive(true);
+                        arrowMiddlePosition = 4;
+                    }
+                    else if (arrowMiddlePosition == 4)
+                    {
+                        arrowMiddle04.SetActive(false);
+                        arrowMiddle01.SetActive(true);
+                        arrowMiddlePosition = 1;
+                    }
+                }
+                else if (inReachSwitch02)
+                {
+                    //move right
+                    if (arrowRightPosition == 1)
+                    {
+                        arrowRight01.SetActive(false);
+                        arrowRight02.SetActive(true);
+                        arrowRightPosition = 2;
+                    }
+                    else if (arrowRightPosition == 2)
+                    {
+                        arrowRight02.SetActive(false);
+                        arrowRight03.SetActive(true);
+                        arrowRightPosition = 3;
+                    }
+                    else if (arrowRightPosition == 3)
+                    {
+                        arrowRight03.SetActive(false);
+                        arrowRight04.SetActive(true);
+                        arrowRightPosition = 4;
+                    }
+                    else if (arrowRightPosition == 4)
+                    {
+                        arrowRight04.SetActive(false);
+                        arrowRight01.SetActive(true);
+                        arrowRightPosition = 1;
+                    }
+
+                    //move middle
+                    if (arrowMiddlePosition == 1)
+                    {
+                        arrowMiddle01.SetActive(false);
+                        arrowMiddle02.SetActive(true);
+                        arrowMiddlePosition = 2;
+                    }
+                    else if (arrowMiddlePosition == 2)
+                    {
+                        arrowMiddle02.SetActive(false);
+                        arrowMiddle03.SetActive(true);
+                        arrowMiddlePosition = 3;
+                    }
+                    else if (arrowMiddlePosition == 3)
+                    {
+                        arrowMiddle03.SetActive(false);
+                        arrowMiddle04.SetActive(true);
+                        arrowMiddlePosition = 4;
+                    }
+                    else if (arrowMiddlePosition == 4)
+                    {
+                        arrowMiddle04.SetActive(false);
+                        arrowMiddle01.SetActive(true);
+                        arrowMiddlePosition = 1;
+                    }
                 }
             }
         }

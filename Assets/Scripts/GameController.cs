@@ -8,6 +8,15 @@ public class GameController : MonoBehaviour
     public bool puzzle01 = false;
     public bool puzzle02 = false;
     public bool puzzle03 = false;
+    public bool puzzle04 = false;
+
+    public GameObject interactText;
+    public GameObject runeInteractText;
+
+    public bool textOff01 = false;
+    public bool textOff02 = false;
+    public bool textOff03 = false;
+    public bool textOff04 = false;
 
     //braziers
     public GameObject brazier01_nm;
@@ -35,6 +44,11 @@ public class GameController : MonoBehaviour
     //statue
     public GameObject statue;
 
+    //widmills
+    public GameObject arrowLeft;
+    public GameObject arrowMiddle;
+    public GameObject arrowRight;
+
     void Start()
     {
         
@@ -51,6 +65,11 @@ public class GameController : MonoBehaviour
             puzzle01 = true;
             brazier01_nm.SetActive(true);
             brazier01_dr.SetActive(true);
+            if (textOff01 == false)
+            {
+                interactText.SetActive(false);
+                textOff01 = true;
+            }
         }
 
         //puzzle 2
@@ -59,6 +78,11 @@ public class GameController : MonoBehaviour
             puzzle02 = true;
             brazier02_nm.SetActive(true);
             brazier02_dr.SetActive(true);
+            if (textOff02 == false)
+            {
+                runeInteractText.SetActive(false);
+                textOff02 = true;
+            }
         }
 
         //puzzle 3
@@ -67,6 +91,24 @@ public class GameController : MonoBehaviour
             puzzle03 = true;
             brazier03_nm.SetActive(true);
             brazier03_dr.SetActive(true);
+            if (textOff03 == false)
+            {
+                interactText.SetActive(false);
+                textOff03 = true;
+            }
+        }
+
+        //puzzle 4
+        if (arrowLeft.activeSelf == true && arrowMiddle.activeSelf == true && arrowRight.activeSelf == true)
+        {
+            puzzle04 = true;
+            brazier04_nm.SetActive(true);
+            brazier04_dr.SetActive(true);
+            if (textOff04 == false)
+            {
+                interactText.SetActive(false);
+                textOff04 = true;
+            }
         }
     }
 }

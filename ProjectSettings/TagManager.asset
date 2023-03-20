@@ -21,6 +21,8 @@ TagManager:
   - RuneDown
   - RuneLeft
   - RuneRight
+  - Switch01
+  - Switch02
   layers:
   - Default
   - TransparentFX
