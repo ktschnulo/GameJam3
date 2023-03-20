@@ -513,7 +513,7 @@ public class Interact : MonoBehaviour
             }
 
             //puzzle 4
-            if (gameController.GetComponent<GameController>().puzzle03 == false)
+            if (gameController.GetComponent<GameController>().puzzle04 == false)
             {
                 if (inReachSwitch01)
                 {
