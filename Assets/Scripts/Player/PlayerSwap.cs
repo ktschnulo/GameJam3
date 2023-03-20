@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSwap : MonoBehaviour
 {
     public string currRealm = "Dream";
+    public GameObject escMenu;
 
     //audio 
     public AudioSource nmMusic;
@@ -21,6 +22,18 @@ public class PlayerSwap : MonoBehaviour
         xpos = transform.position.x;
         ypos = transform.position.y;
         zpos = transform.position.z;
+
+        //ESC
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (escMenu.activeSelf == false){
+                escMenu.SetActive(true);
+            }
+            else
+            {
+                escMenu.SetActive(false);
+            }
+        }
 
         //swaps
         if (Input.GetKeyDown(KeyCode.Q) && GetComponent<movement>().grounded == true)
