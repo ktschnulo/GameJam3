@@ -32,6 +32,9 @@ public class GameController : MonoBehaviour
     public GameObject leverOff;
     public GameObject leverOn;
 
+    //statue
+    public GameObject statue;
+
     void Start()
     {
         
@@ -49,9 +52,14 @@ public class GameController : MonoBehaviour
             brazier01_nm.SetActive(true);
             brazier01_dr.SetActive(true);
         }
-        
-        //puzzle 2
 
+        //puzzle 2
+        if (statue.transform.position.x == 0 && statue.transform.position.z == -5)
+        {
+            puzzle02 = true;
+            brazier02_nm.SetActive(true);
+            brazier02_dr.SetActive(true);
+        }
 
         //puzzle 3
         if (leverOn.activeSelf == true)
