@@ -18,7 +18,7 @@ public class PlayerSwap : MonoBehaviour
         zpos = transform.position.z;
 
         //swaps
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && GetComponent<movement>().grounded == true)
         {
             if (currRealm.Equals("Dream"))
             {
