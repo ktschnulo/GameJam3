@@ -12,6 +12,7 @@ using TMPro;
     public GameObject sceneLight;
     public GameObject startBtn;
     public GameObject exitBtn;
+    public GameObject optionBtn;
     public TextMeshProUGUI title;
     public TextMeshProUGUI theme1;
     public TextMeshProUGUI theme2;
@@ -19,6 +20,7 @@ using TMPro;
     public TextMeshProUGUI theme4;
     public TextMeshProUGUI startTxt;
     public TextMeshProUGUI exitTxt;
+    public TextMeshProUGUI optionTxt;
     public VertexGradient newGradient;
     public VertexGradient defaultGradient;
     private bool active = false;
@@ -62,6 +64,7 @@ using TMPro;
                 sceneLight.SetActive(false);
                 startBtn.SetActive(true);
                 exitBtn.SetActive(true);
+                optionBtn.SetActive(true);
                 active = true;
             }
         }
@@ -92,6 +95,7 @@ using TMPro;
             dilateStartTxtVal += 0.005f;
             startTxt.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, dilateStartTxtVal);
             exitTxt.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, dilateStartTxtVal);
+            optionTxt.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, dilateStartTxtVal);
         }
         else if (dilateThemeVal > -1.0)
         {
