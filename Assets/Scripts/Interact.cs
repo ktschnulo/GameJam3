@@ -404,9 +404,8 @@ public class Interact : MonoBehaviour
                 if (inReachRuneUp)
                 {
                     //can move up
-                    if (statuePosition == 1 || statuePosition == 2 || statuePosition == 4 || statuePosition == 6 ||
-                        statuePosition == 7 || statuePosition == 8 || statuePosition == 9 || statuePosition == 10 ||
-                        statuePosition == 12)
+                    if (statuePosition == 1 || statuePosition == 2 || statuePosition == 12 || statuePosition == 6 ||
+                        statuePosition == 7 || statuePosition == 8 || statuePosition == 9 || statuePosition == 10)
                     {
                         moveStatueGoodSFX.Play();
                         statuePosition = statuePosition + 4;
@@ -429,9 +428,8 @@ public class Interact : MonoBehaviour
                 else if (inReachRuneDown)
                 {
                     //can move down
-                    if (statuePosition == 5 || statuePosition == 6 || statuePosition == 8 || statuePosition == 10 ||
-                        statuePosition == 11 || statuePosition == 12 || statuePosition == 13 || statuePosition == 14 ||
-                        statuePosition == 16)
+                    if (statuePosition == 5 || statuePosition == 6 || statuePosition == 16 || statuePosition == 10 ||
+                        statuePosition == 11 || statuePosition == 12 || statuePosition == 13 || statuePosition == 14)
                     {
                         moveStatueGoodSFX.Play();
                         statuePosition = statuePosition - 4;
@@ -513,7 +511,7 @@ public class Interact : MonoBehaviour
             }
 
             //puzzle 4
-            if (gameController.GetComponent<GameController>().puzzle03 == false)
+            if (gameController.GetComponent<GameController>().puzzle04 == false)
             {
                 if (inReachSwitch01)
                 {

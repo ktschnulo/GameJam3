@@ -27,10 +27,14 @@ public class PlayerSwap : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (escMenu.activeSelf == false){
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 escMenu.SetActive(true);
             }
             else
             {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 escMenu.SetActive(false);
             }
         }
