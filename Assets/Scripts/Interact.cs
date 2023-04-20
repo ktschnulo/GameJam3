@@ -312,7 +312,7 @@ public class Interact : MonoBehaviour
             else if (inReachLadderUp03)
             {
                 ladderClimbSFX.Play();
-                playerObj.transform.position = new Vector3(transform.position.x + 6, 157f, transform.position.z);
+                playerObj.transform.position = new Vector3(transform.position.x + 5, 157f, transform.position.z);
             }
 
             //puzzle 1
