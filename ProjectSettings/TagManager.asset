@@ -23,6 +23,9 @@ TagManager:
   - RuneRight
   - Switch01
   - Switch02
+  - iceBarrier
+  - ice
+  - land
   layers:
   - Default
   - TransparentFX
