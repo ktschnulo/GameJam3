@@ -48,12 +48,7 @@ public class iceCollision : MonoBehaviour
         {
             this.GetComponent<Rigidbody>().velocity = moveDirection * 10;
         }
-    }
-
-    // Update is called once per frame
-    public void FixedUpdate()
-    { 
-
+        Debug.Log(this.GetComponent<Rigidbody>().velocity);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -65,12 +60,14 @@ public class iceCollision : MonoBehaviour
             barCol = false;
             this.GetComponent<movement>().enabled = false;
             //this.GetComponent<PlayerSwap>().enabled = false;
+            Debug.Log("ice");
         }
         if (collision.gameObject.tag == "iceBarrier")
         {
             barCol = true;
             this.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
             iceCol = false;
+            Debug.Log("iceBarrier");
         }
         if (collision.gameObject.tag == "land")
         {
@@ -78,6 +75,7 @@ public class iceCollision : MonoBehaviour
             iceCol = false;
             this.GetComponent<movement>().enabled = true;
             //this.GetComponent<PlayerSwap>().enabled = true;
+            Debug.Log("land");
         }
     }
 }
