@@ -66,6 +66,7 @@ public class iceCollision : MonoBehaviour
         {
             barCol = true;
             this.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
+            //move object back to retrigger collision if stuck
             iceCol = false;
             Debug.Log("iceBarrier");
         }
