@@ -187,7 +187,13 @@ public class TutorialInteract : MonoBehaviour
                 tutorialFlowerCodeInput += "1";
                 if (tutorialFlowerCodeInput.Length == 3 ){
                     if (tutorialFlowerCodeInput.Equals(tutorialFlowerCode)){
-                        //correct
+                        puzzleText1.SetActive(false);
+                        puzzleText2.SetActive(false);
+                        puzzleText3.SetActive(false);
+                        puzzleText4.SetActive(false);
+                        puzzleText5.SetActive(false);
+                        puzzleTextComplete.SetActive(true);
+                        puzzleTextNum = 7;
                     }
                     else{
                         tutorialFlower1.SetActive(true);
@@ -204,7 +210,13 @@ public class TutorialInteract : MonoBehaviour
                 tutorialFlowerCodeInput += "2";
                 if (tutorialFlowerCodeInput.Length == 3 ){
                     if (tutorialFlowerCodeInput.Equals(tutorialFlowerCode)){
-                        //correct
+                        puzzleText1.SetActive(false);
+                        puzzleText2.SetActive(false);
+                        puzzleText3.SetActive(false);
+                        puzzleText4.SetActive(false);
+                        puzzleText5.SetActive(false);
+                        puzzleTextComplete.SetActive(true);
+                        puzzleTextNum = 7;
                     }
                     else{
                         tutorialFlower1.SetActive(true);
@@ -221,7 +233,13 @@ public class TutorialInteract : MonoBehaviour
                 tutorialFlowerCodeInput += "3";
                 if (tutorialFlowerCodeInput.Length == 3 ){
                     if (tutorialFlowerCodeInput.Equals(tutorialFlowerCode)){
-                        //correct
+                        puzzleText1.SetActive(false);
+                        puzzleText2.SetActive(false);
+                        puzzleText3.SetActive(false);
+                        puzzleText4.SetActive(false);
+                        puzzleText5.SetActive(false);
+                        puzzleTextComplete.SetActive(true);
+                        puzzleTextNum = 7;
                     }
                     else{
                         tutorialFlower1.SetActive(true);
@@ -328,11 +346,6 @@ public class TutorialInteract : MonoBehaviour
                 puzzleText4.SetActive(false);
                 puzzleText5.SetActive(true);
                 puzzleTextNum = 6;
-            }
-            else if (puzzleTextNum == 6){
-                puzzleText5.SetActive(false);
-                puzzleTextComplete.SetActive(true);
-                puzzleTextNum = 7;
             }
             else if (puzzleTextNum == 7){
                 //go to real game
