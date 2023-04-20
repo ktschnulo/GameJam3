@@ -28,6 +28,9 @@ TagManager:
   - TutorialFlower1
   - TutorialFlower2
   - TutorialFlower3
+  - iceBarrier
+  - ice
+  - land
   layers:
   - Default
   - TransparentFX
