@@ -23,6 +23,11 @@ TagManager:
   - RuneRight
   - Switch01
   - Switch02
+  - TutorialMan
+  - TutorialMan2
+  - TutorialFlower1
+  - TutorialFlower2
+  - TutorialFlower3
   layers:
   - Default
   - TransparentFX

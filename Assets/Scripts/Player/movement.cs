@@ -31,6 +31,8 @@ public class movement : MonoBehaviour
 
     Rigidbody rb;
 
+    public bool movementLocked = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -39,23 +41,27 @@ public class movement : MonoBehaviour
 
     private void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .5f + .2f, whatIsGround);
-        myInput();
-        SpeedControl();
+        if (movementLocked == false){
+            grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .5f + .2f, whatIsGround);
+            myInput();
+            SpeedControl();
 
-        if (grounded)
-        {
-            rb.drag = groundDrag;
-        }
-        else
-        {
-            rb.drag = 0;
+            if (grounded)
+            {
+                rb.drag = groundDrag;
+            }
+            else
+            {
+                rb.drag = 0;
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (movementLocked == false){
+            MovePlayer();
+        }
     }
 
     private void myInput()
