@@ -27,6 +27,12 @@ public class Interact : MonoBehaviour
     public bool inReachLadderUp02;
     public bool inReachLadderUp03;
 
+    [Header("Water Flow")]
+    //water flow
+    public GameObject waterFlowInteractText;
+    public GameObject water;
+    public bool inReachWaterFlow;
+
     [Header("Puzzle 1")]
     //torches
     public GameObject torchInteractText;
@@ -113,6 +119,13 @@ public class Interact : MonoBehaviour
         {
             inReachLadderUp03 = true;
             ladderUpInteractText.SetActive(true);
+        }
+
+        //water flow
+        if (other.gameObject.tag == "waterFlow" && water.transform.position.y < -1.7)
+        {
+            inReachWaterFlow = true;
+            waterFlowInteractText.SetActive(true);
         }
 
         //puzzle 1
@@ -220,6 +233,13 @@ public class Interact : MonoBehaviour
             ladderUpInteractText.SetActive(false);
         }
 
+        //water flow
+        if (other.gameObject.tag == "waterFlow")
+        {
+            inReachWaterFlow = false;
+            waterFlowInteractText.SetActive(false);
+        }
+
         //puzzle 1
         if (other.gameObject.tag == "Torch01")
         {
@@ -313,6 +333,20 @@ public class Interact : MonoBehaviour
             {
                 ladderClimbSFX.Play();
                 playerObj.transform.position = new Vector3(transform.position.x + 5, 157f, transform.position.z);
+            }
+
+            //water flow
+            if (inReachWaterFlow)
+            {
+               // waterSFX.Play();
+                if(water.transform.position.y < -1.7)
+                {
+                    water.transform.position = new Vector3(water.transform.position.x, water.transform.position.y + 0.01f, water.transform.position.z);
+                }
+                else
+                {
+                    inReachWaterFlow = false;
+                }
             }
 
             //puzzle 1
