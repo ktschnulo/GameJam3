@@ -31,7 +31,9 @@ public class Interact : MonoBehaviour
     //water flow
     public GameObject waterFlowInteractText;
     public GameObject water;
+    public GameObject waterWheel;
     public bool inReachWaterFlow;
+    private bool waterInteracted = false;
 
     [Header("Puzzle 1")]
     //torches
@@ -122,7 +124,7 @@ public class Interact : MonoBehaviour
         }
 
         //water flow
-        if (other.gameObject.tag == "waterFlow" && water.transform.position.y < -1.7)
+        if (other.gameObject.tag == "waterFlow" && !waterInteracted)
         {
             inReachWaterFlow = true;
             waterFlowInteractText.SetActive(true);
@@ -316,6 +318,18 @@ public class Interact : MonoBehaviour
 
     void Update()
     {
+        if (waterInteracted)
+        {
+            if (water.transform.position.y < 148.3)
+            {
+                water.transform.Translate(Vector3.up * 0.7f * Time.deltaTime);
+                waterWheel.transform.eulerAngles = new Vector3(
+                    waterWheel.transform.eulerAngles.x,
+                    waterWheel.transform.eulerAngles.y,
+                    waterWheel.transform.eulerAngles.z + 1
+                );
+            }
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             //ladders
@@ -338,15 +352,10 @@ public class Interact : MonoBehaviour
             //water flow
             if (inReachWaterFlow)
             {
-               // waterSFX.Play();
-                if(water.transform.position.y < -1.7)
-                {
-                    water.transform.position = new Vector3(water.transform.position.x, water.transform.position.y + 0.01f, water.transform.position.z);
-                }
-                else
-                {
-                    inReachWaterFlow = false;
-                }
+                //waterSFX.Play();
+                waterInteracted = true;
+                inReachWaterFlow = false;
+                waterFlowInteractText.SetActive(false);
             }
 
             //puzzle 1
