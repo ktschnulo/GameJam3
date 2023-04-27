@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialInteract : MonoBehaviour
 {
@@ -348,7 +349,7 @@ public class TutorialInteract : MonoBehaviour
                 puzzleTextNum = 6;
             }
             else if (puzzleTextNum == 7){
-                //go to real game
+                SceneManager.LoadScene(1);
             }
         }
         if (Input.GetKeyDown(KeyCode.Q)){

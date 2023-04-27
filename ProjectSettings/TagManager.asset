@@ -35,6 +35,15 @@ TagManager:
   - waterFlow
   - mountain
   - fog
+  - RedPed
+  - OrangePed
+  - YellowPed
+  - GreenPed
+  - BluePed
+  - PurplePed
+  - PinkPed
+  - BlackPed
+  - ExitDoor
   layers:
   - Default
   - TransparentFX
