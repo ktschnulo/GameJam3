@@ -39,8 +39,8 @@ public class PlayerSwap : MonoBehaviour
             }
         }
 
-        //swaps
-        if (Input.GetKeyDown(KeyCode.Q) && GetComponent<movement>().grounded == true)
+        //swaps  //grounded removed temporarily
+        if (Input.GetKeyDown(KeyCode.Q) /*&& GetComponent<movement>().grounded == true*/)
         {
             if (currRealm.Equals("Dream"))
             {
@@ -72,11 +72,11 @@ public class PlayerSwap : MonoBehaviour
         {
             if (currRealm.Equals("Dream"))
             {
-                transform.position = new Vector3(2.5f, 146f, 77f);
+                transform.position = new Vector3(2.5f, 160f, 77f);
             }
             else
             {
-                transform.position = new Vector3(2.5f, -3f, 77f);
+                transform.position = new Vector3(2.5f, 5f, 77f);
             }
         }
     }
