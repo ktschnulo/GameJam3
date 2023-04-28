@@ -48,7 +48,14 @@ public class iceCollision : MonoBehaviour
         {
             this.GetComponent<Rigidbody>().velocity = moveDirection * 10;
         }
-        Debug.Log(this.GetComponent<Rigidbody>().velocity);
+
+
+        if (Input.GetKeyDown(KeyCode.Q) && (iceCol == true || barCol == true))
+        {
+            barCol = false;
+            iceCol = false;
+            this.GetComponent<movement>().enabled = true;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -59,8 +66,7 @@ public class iceCollision : MonoBehaviour
             iceCol = true;
             barCol = false;
             this.GetComponent<movement>().enabled = false;
-            //this.GetComponent<PlayerSwap>().enabled = false;
-            Debug.Log("ice");
+            //Debug.Log("ice");
         }
         if (collision.gameObject.tag == "iceBarrier")
         {
@@ -68,15 +74,14 @@ public class iceCollision : MonoBehaviour
             this.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
             //move object back to retrigger collision if stuck
             iceCol = false;
-            Debug.Log("iceBarrier");
+            //Debug.Log("iceBarrier");
         }
         if (collision.gameObject.tag == "land")
         {
             barCol = false;
             iceCol = false;
             this.GetComponent<movement>().enabled = true;
-            //this.GetComponent<PlayerSwap>().enabled = true;
-            Debug.Log("land");
+            //Debug.Log("land");
         }
     }
 }

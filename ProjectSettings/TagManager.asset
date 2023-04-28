@@ -44,6 +44,9 @@ TagManager:
   - PinkPed
   - BlackPed
   - ExitDoor
+  - fire
+  - fire2
+  - fire3
   layers:
   - Default
   - TransparentFX
