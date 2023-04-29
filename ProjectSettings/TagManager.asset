@@ -53,6 +53,8 @@ TagManager:
   - Grave02
   - Grave03
   - Grave04
+  - skullChain
+  - waterFloor
   layers:
   - Default
   - TransparentFX

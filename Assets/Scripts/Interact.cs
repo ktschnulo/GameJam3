@@ -36,6 +36,15 @@ public class Interact : MonoBehaviour
     public bool inReachWaterFlow;
     private bool waterInteracted = false;
 
+    [Header("Skull Platform")]
+    //water flow
+    public GameObject skullPInteractText;
+    public GameObject skullP;
+    public GameObject skullGear;
+    public GameObject skullGear2;
+    public bool inReachSkullP;
+    private bool skullPInteracted = false;
+
     [Header("Puzzle 1")]
     //torches
     public GameObject torchInteractText;
@@ -160,6 +169,13 @@ public class Interact : MonoBehaviour
         {
             inReachWaterFlow = true;
             waterFlowInteractText.SetActive(true);
+        }
+
+        //skull platform
+        if (other.gameObject.tag == "skullChain" && !skullPInteracted)
+        {
+            inReachSkullP = true;
+            skullPInteractText.SetActive(true);
         }
 
         //puzzle 1
@@ -310,6 +326,13 @@ public class Interact : MonoBehaviour
             waterFlowInteractText.SetActive(false);
         }
 
+        //skull platform
+        if (other.gameObject.tag == "skullChain")
+        {
+            inReachSkullP = false;
+            skullPInteractText.SetActive(false);
+        }
+
         //puzzle 1
         if (other.gameObject.tag == "Torch01")
         {
@@ -422,7 +445,7 @@ public class Interact : MonoBehaviour
     {
         if (waterInteracted)
         {
-            if (water.transform.position.y < 148.3)
+            if (water.transform.position.y < 148.9)
             {
                 water.transform.Translate(Vector3.up * 0.7f * Time.deltaTime);
                 waterWheel.transform.eulerAngles = new Vector3(
@@ -432,6 +455,25 @@ public class Interact : MonoBehaviour
                 );
             }
         }
+
+        if (skullPInteracted)
+        {
+            if (skullP.transform.position.y > -5)
+            {
+                skullP.transform.Translate(Vector3.down * 0.7f * Time.deltaTime);
+                skullGear.transform.eulerAngles = new Vector3(
+                    skullGear.transform.eulerAngles.x,
+                    skullGear.transform.eulerAngles.y,
+                    skullGear.transform.eulerAngles.z + 1
+                );
+                skullGear2.transform.eulerAngles = new Vector3(
+                    skullGear2.transform.eulerAngles.x,
+                    skullGear2.transform.eulerAngles.y,
+                    skullGear2.transform.eulerAngles.z - 1
+                );
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             //ladders
@@ -458,6 +500,15 @@ public class Interact : MonoBehaviour
                 waterInteracted = true;
                 inReachWaterFlow = false;
                 waterFlowInteractText.SetActive(false);
+            }
+
+            //skull platform
+            if (inReachSkullP)
+            {
+                //creekingSFX.Play();
+                skullPInteracted = true;
+                inReachSkullP = false;
+                skullPInteractText.SetActive(false);
             }
 
             //puzzle 1

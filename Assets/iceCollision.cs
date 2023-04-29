@@ -50,10 +50,11 @@ public class iceCollision : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Q) && (iceCol == true || barCol == true))
+        if ((Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.R)) && (iceCol == true || barCol == true))
         {
             barCol = false;
             iceCol = false;
+            this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             this.GetComponent<movement>().enabled = true;
         }
     }
