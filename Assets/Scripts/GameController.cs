@@ -13,11 +13,13 @@ public class GameController : MonoBehaviour
     //audio 
     public AudioSource puzzleFinishSFX;
 
+
     //puzzles
     public bool puzzle01 = false;
     public bool puzzle02 = false;
     public bool puzzle03 = false;
     public bool puzzle04 = false;
+    public bool puzzle06 = false;
     public bool completed = false;
 
     public GameObject completedText;
@@ -28,6 +30,7 @@ public class GameController : MonoBehaviour
     public bool textOff02 = false;
     public bool textOff03 = false;
     public bool textOff04 = false;
+    public bool textOff06 = false;
 
     //braziers
     public GameObject brazier01_nm;
@@ -59,6 +62,11 @@ public class GameController : MonoBehaviour
     public GameObject arrowLeft;
     public GameObject arrowMiddle;
     public GameObject arrowRight;
+
+    //puzzle 6
+    public GameObject b1;
+    public GameObject b2;
+    public GameObject b3;
 
     void Start()
     {
@@ -124,6 +132,17 @@ public class GameController : MonoBehaviour
                 puzzleFinishSFX.Play();
                 interactText.SetActive(false);
                 textOff04 = true;
+            }
+        }
+
+        //puzzle 6
+        if(b1.activeSelf == true && b2.activeSelf == true && b3.activeSelf == true)
+        {
+            puzzle06 = true;
+            if(textOff06 == false)
+            {
+                puzzleFinishSFX.Play();
+                textOff06 = true;
             }
         }
 

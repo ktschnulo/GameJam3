@@ -20,6 +20,7 @@ public class Interact : MonoBehaviour
     public AudioSource errorSFX;
     public AudioSource ladderClimbSFX;
 
+
     [Header("Ladders")]
     //ladders
     public GameObject ladderUpInteractText;
@@ -93,6 +94,28 @@ public class Interact : MonoBehaviour
     public GameObject arrowRight03;
     public GameObject arrowRight04;
 
+    [Header("Puzzle 6")]
+
+    public GameObject crossInteractText;
+    public GameObject graveInteractText;
+    public GameObject cross;
+    public GameObject horn;
+    public GameObject grave1;
+    public GameObject grave2;
+    public GameObject grave3;
+    public GameObject grave4;
+    public GameObject b1;
+    public GameObject b2;
+    public GameObject b3;
+    public int[] answers = new int[5];
+    public int current = 0;
+    public bool inReachCross;
+    public bool inReachHorn;
+    public bool inReachGrave1;
+    public bool inReachGrave2;
+    public bool inReachGrave3;
+    public bool inReachGrave4;
+
     void Start()
     {
         statuePosition = 2;
@@ -102,6 +125,15 @@ public class Interact : MonoBehaviour
         inReachTorch04 = false;
         inReachTorch05 = false;
         inReachTorch06 = false;
+
+        //puzzle 6
+        inReachCross = false;
+        inReachHorn = false;
+        inReachGrave1 = false;
+        inReachGrave2 = false;
+        inReachGrave3 = false;
+        inReachGrave4 = false;
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -214,6 +246,42 @@ public class Interact : MonoBehaviour
                 torchInteractText.SetActive(true);
             }
         }
+        //puzzle 6
+        if (gameController.GetComponent<GameController>().puzzle06 == false)
+        {
+            if (other.gameObject.tag == "Cross")
+            {
+                inReachCross = true;
+                crossInteractText.SetActive(true);
+            }
+            else if (other.gameObject.tag == "Horn")
+            {
+                inReachHorn = true;
+                graveInteractText.SetActive(true);
+            }
+            else if (other.gameObject.tag == "Grave01")
+            {
+                inReachGrave1 = true;
+                graveInteractText.SetActive(true);
+            }
+            else if (other.gameObject.tag == "Grave02")
+            {
+                inReachGrave2 = true;
+                graveInteractText.SetActive(true);
+            }
+            else if (other.gameObject.tag == "Grave03")
+            {
+                inReachGrave3 = true;
+                graveInteractText.SetActive(true);
+            }
+            else if (other.gameObject.tag == "Grave04")
+            {
+                inReachGrave4 = true;
+                graveInteractText.SetActive(true);
+            }
+        }
+
+
     }
 
     void OnTriggerExit(Collider other)
@@ -314,6 +382,40 @@ public class Interact : MonoBehaviour
             inReachSwitch02 = false;
             torchInteractText.SetActive(false);
         }
+
+
+        //puzzle 6
+        else if (other.gameObject.tag == "Cross")
+        {
+            inReachCross = false;
+            crossInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "Horn")
+        {
+            inReachHorn = false;
+            graveInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "Grave01")
+        {
+            inReachGrave1 = false;
+            graveInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "Grave02")
+        {
+            inReachGrave2 = false;
+            graveInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "Grave03")
+        {
+            inReachGrave3 = false;
+            graveInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "Grave04")
+        {
+            inReachGrave4 = false;
+            graveInteractText.SetActive(false);
+        }
+
     }
 
     void Update()
@@ -665,6 +767,108 @@ public class Interact : MonoBehaviour
                         arrowMiddle01.SetActive(true);
                         arrowMiddlePosition = 1;
                     }
+                }
+            }
+
+            //puzzle 6
+            if (gameController.GetComponent<GameController>().puzzle06 == false)
+            {
+                if (inReachCross == true)
+                {
+                    cross.SetActive(false);
+                    inReachCross = false;
+                    crossInteractText.SetActive(false);
+                    b3.SetActive(true);
+                }
+                else if(inReachHorn == true)
+                {
+                    horn.SetActive(false);
+                    inReachHorn = false;
+                    graveInteractText.SetActive(false);
+                    b1.SetActive(true);
+                }
+
+                if(inReachGrave1 == true)
+                {
+                    if(current < 4)
+                    {
+                        answers[current] = 1;
+                        current = current + 1;
+                    }
+                    else if(current >= 4)
+                    {
+                        errorSFX.Play();
+                        current = 0;
+                        answers[0] = 0;
+                        answers[1] = 0;
+                        answers[2] = 0;
+                        answers[3] = 0;
+                    }
+                }
+                else if(inReachGrave2 == true)
+                {
+                    if(current < 4)
+                    {
+                        answers[current] = 2;
+                        current = current +1;
+                    }
+                    else if(current >= 4)
+                    {
+                        errorSFX.Play();
+                        current = 0;
+                        answers[0] = 0;
+                        answers[1] = 0;
+                        answers[2] = 0;
+                        answers[3] = 0;
+                    }
+                }
+                else if(inReachGrave3 == true)
+                {
+                    if(current < 4)
+                    {
+                        answers[current] = 3;
+                        current = current +1;
+                    }
+                    else if(current >= 4)
+                    {
+                        errorSFX.Play();
+                        current = 0;
+                        answers[0] = 0;
+                        answers[1] = 0;
+                        answers[2] = 0;
+                        answers[3] = 0;
+                    }
+                }
+                else if(inReachGrave4 == true)
+                {
+                    if(current < 4)
+                    {
+                        answers[current] = 4;
+                        current = current +1;
+                    }
+                    else if(current >= 4)
+                    {
+                        errorSFX.Play();
+                        current = 0;
+                        answers[0] = 0;
+                        answers[1] = 0;
+                        answers[2] = 0;
+                        answers[3] = 0;
+                    }
+                }
+
+                if(answers[0] == 1 && answers[1] == 2 && answers[2] == 3 && answers[3] == 4)
+                {
+                    b2.SetActive(true);
+                    graveInteractText.SetActive(false);
+                    inReachGrave1 = false;
+                    inReachGrave2 = false;
+                    inReachGrave3 = false;
+                    inReachGrave4 = false;
+                    grave1.SetActive(false);
+                    grave2.SetActive(false);
+                    grave3.SetActive(false);
+                    grave4.SetActive(false);
                 }
             }
         }

@@ -47,6 +47,12 @@ TagManager:
   - fire
   - fire2
   - fire3
+  - Cross
+  - Horn
+  - Grave01
+  - Grave02
+  - Grave03
+  - Grave04
   layers:
   - Default
   - TransparentFX
