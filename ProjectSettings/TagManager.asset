@@ -55,6 +55,13 @@ TagManager:
   - Grave04
   - skullChain
   - waterFloor
+  - CrystalRed
+  - CrystalOrange
+  - CrystalYellow
+  - CrystalBlue
+  - CrystalGreen
+  - CrystalPurple
+  - CrystalPink
   layers:
   - Default
   - TransparentFX

@@ -125,6 +125,22 @@ public class Interact : MonoBehaviour
     public bool inReachGrave3;
     public bool inReachGrave4;
 
+    [Header("Crystals")]
+    public GameObject redCrystal;
+    public bool inReachRed;
+    public GameObject orangeCrystal;
+    public bool inReachOrange;
+    public GameObject yellowCrystal;
+    public bool inReachYellow;
+    public GameObject blueCrystal;
+    public bool inReachBlue;
+    public GameObject greenCrystal;
+    public bool inReachGreen;
+    public GameObject purpleCrystal;
+    public bool inReachPurple;
+    public GameObject pinkCrystal;
+    public bool inReachPink;
+
     void Start()
     {
         statuePosition = 2;
@@ -147,6 +163,43 @@ public class Interact : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        //crystals
+        if (other.gameObject.tag == "CrystalRed")
+        {
+            inReachRed = true;
+            torchInteractText.SetActive(true);
+        }
+        else if (other.gameObject.tag == "CrystalOrange")
+        {
+            inReachOrange = true;
+            torchInteractText.SetActive(true);
+        }
+        else if (other.gameObject.tag == "CrystalYellow")
+        {
+            inReachYellow = true;
+            torchInteractText.SetActive(true);
+        }
+        else if (other.gameObject.tag == "CrystalBlue")
+        {
+            inReachBlue = true;
+            torchInteractText.SetActive(true);
+        }
+        else if (other.gameObject.tag == "CrystalGreen")
+        {
+            inReachGreen = true;
+            torchInteractText.SetActive(true);
+        }
+        else if (other.gameObject.tag == "CrystalPurple")
+        {
+            inReachPurple = true;
+            torchInteractText.SetActive(true);
+        }
+        else if (other.gameObject.tag == "CrystalPink")
+        {
+            inReachPink = true;
+            torchInteractText.SetActive(true);
+        }
+
         //ladders
         if (other.gameObject.tag == "Ladder01Up")
         {
@@ -296,12 +349,47 @@ public class Interact : MonoBehaviour
                 graveInteractText.SetActive(true);
             }
         }
-
-
     }
 
     void OnTriggerExit(Collider other)
     {
+        //crystals
+        if (other.gameObject.tag == "CrystalRed")
+        {
+            inReachRed = false;
+            torchInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "CrystalOrange")
+        {
+            inReachOrange = false;
+            torchInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "CrystalYellow")
+        {
+            inReachYellow = false;
+            torchInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "CrystalBlue")
+        {
+            inReachBlue = false;
+            torchInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "CrystalGreen")
+        {
+            inReachGreen = false;
+            torchInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "CrystalPurple")
+        {
+            inReachPurple = false;
+            torchInteractText.SetActive(false);
+        }
+        else if (other.gameObject.tag == "CrystalPink")
+        {
+            inReachPink = false;
+            torchInteractText.SetActive(false);
+        }
+
         //ladders
         if (other.gameObject.tag == "Ladder01Up")
         {
@@ -476,6 +564,57 @@ public class Interact : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            //crystals
+            if (inReachRed)
+            {
+                redCrystal.SetActive(false);
+                torchInteractText.SetActive(false);
+                gameController.GetComponent<GameController>().complete1 = true;
+                inReachRed = false;
+            }
+            else if (inReachOrange)
+            {
+                orangeCrystal.SetActive(false);
+                torchInteractText.SetActive(false);
+                gameController.GetComponent<GameController>().complete2 = true;
+                inReachOrange = false;
+            }
+            else if (inReachYellow)
+            {
+                yellowCrystal.SetActive(false);
+                torchInteractText.SetActive(false);
+                gameController.GetComponent<GameController>().complete3 = true;
+                inReachYellow = false;
+            }
+            else if (inReachBlue)
+            {
+                blueCrystal.SetActive(false);
+                torchInteractText.SetActive(false);
+                gameController.GetComponent<GameController>().complete4 = true;
+                inReachBlue= false;
+            }
+            else if (inReachGreen)
+            {
+                greenCrystal.SetActive(false);
+                torchInteractText.SetActive(false);
+                gameController.GetComponent<GameController>().complete5 = true;
+                inReachGreen = false;
+            }
+            else if (inReachPurple)
+            {
+                purpleCrystal.SetActive(false);
+                torchInteractText.SetActive(false);
+                gameController.GetComponent<GameController>().complete6 = true;
+                inReachPurple = false;
+            }
+            else if (inReachPink)
+            {
+                pinkCrystal.SetActive(false);
+                torchInteractText.SetActive(false);
+                gameController.GetComponent<GameController>().complete7 = true;
+                inReachPink= false;
+            }
+
             //ladders
             if (inReachLadderUp01)
             {

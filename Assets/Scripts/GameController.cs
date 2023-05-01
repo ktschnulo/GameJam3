@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -68,6 +69,28 @@ public class GameController : MonoBehaviour
     public GameObject b2;
     public GameObject b3;
 
+    //Crystals
+    public GameObject crystalRedCaged;
+    public GameObject crystalRedUncaged;
+    public GameObject crystalOrangeCaged;
+    public GameObject crystalOrangeUncaged;
+    public GameObject crystalYellowCaged;
+    public GameObject crystalYellowUncaged;
+    public GameObject crystalBlueCaged;
+    public GameObject crystalBlueUncaged;
+    public GameObject crystalGreenCaged;
+    public GameObject crystalGreenUncaged;
+
+
+    //completions
+    public bool complete1;
+    public bool complete2;
+    public bool complete3;
+    public bool complete4;
+    public bool complete5;
+    public bool complete6;
+    public bool complete7;
+
     void Start()
     {
         
@@ -83,6 +106,10 @@ public class GameController : MonoBehaviour
         {
             
             puzzle01 = true;
+            if (crystalRedCaged.activeSelf == true){
+                crystalRedCaged.SetActive(false);
+                crystalRedUncaged.SetActive(true);
+            }
             brazier01_nm.SetActive(true);
             brazier01_dr.SetActive(true);
             if (textOff01 == false)
@@ -97,6 +124,10 @@ public class GameController : MonoBehaviour
         if (statue.transform.position.x == 0 && statue.transform.position.z == -5)
         {
             puzzle02 = true;
+            if (crystalYellowCaged.activeSelf == true){
+                crystalYellowCaged.SetActive(false);
+                crystalYellowUncaged.SetActive(true);
+            }
             brazier02_nm.SetActive(true);
             brazier02_dr.SetActive(true);
             if (textOff02 == false)
@@ -111,6 +142,10 @@ public class GameController : MonoBehaviour
         if (leverOn.activeSelf == true)
         {
             puzzle03 = true;
+            if (crystalBlueCaged.activeSelf == true){
+                crystalBlueCaged.SetActive(false);
+                crystalBlueUncaged.SetActive(true);
+            }
             brazier03_nm.SetActive(true);
             brazier03_dr.SetActive(true);
             if (textOff03 == false)
@@ -125,6 +160,10 @@ public class GameController : MonoBehaviour
         if (arrowLeft.activeSelf == true && arrowMiddle.activeSelf == true && arrowRight.activeSelf == true)
         {
             puzzle04 = true;
+            if (crystalOrangeCaged.activeSelf == true){
+                crystalOrangeCaged.SetActive(false);
+                crystalOrangeUncaged.SetActive(true);
+            }
             brazier04_nm.SetActive(true);
             brazier04_dr.SetActive(true);
             if (textOff04 == false)
@@ -139,6 +178,10 @@ public class GameController : MonoBehaviour
         if(b1.activeSelf == true && b2.activeSelf == true && b3.activeSelf == true)
         {
             puzzle06 = true;
+            if (crystalGreenCaged.activeSelf == true){
+                crystalGreenCaged.SetActive(false);
+                crystalGreenUncaged.SetActive(true);
+            }
             if(textOff06 == false)
             {
                 puzzleFinishSFX.Play();
@@ -146,6 +189,7 @@ public class GameController : MonoBehaviour
             }
         }
 
+        /*
         if (puzzle01 == true && puzzle02 == true && puzzle03 == true && puzzle04 == true)
         {
             completedStatue_dr.transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
@@ -160,6 +204,11 @@ public class GameController : MonoBehaviour
                 completedStatue_dr.transform.position = new Vector3(completedStatue_dr.transform.position.x, completedStatue_dr.transform.position.y + 1, completedStatue_dr.transform.position.z);
                 completedStatue_nm.transform.position = new Vector3(completedStatue_nm.transform.position.x, completedStatue_nm.transform.position.y + 1, completedStatue_nm.transform.position.z);
             }
+        }
+        */
+
+        if (complete1 && complete2 && complete3 && complete4 && complete5 && complete6 && complete7){
+            SceneManager.LoadScene(2);
         }
     }
 }
