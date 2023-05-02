@@ -62,6 +62,8 @@ TagManager:
   - CrystalGreen
   - CrystalPurple
   - CrystalPink
+  - fireHolder
+  - restrict
   layers:
   - Default
   - TransparentFX

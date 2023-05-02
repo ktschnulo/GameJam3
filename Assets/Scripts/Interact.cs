@@ -103,6 +103,13 @@ public class Interact : MonoBehaviour
     public GameObject arrowRight03;
     public GameObject arrowRight04;
 
+    [Header("Puzzle 5")]
+    public GameObject campfire;
+    public GameObject fireHolder;
+    public bool inReachCamp;
+    public GameObject campfireInteractText;
+
+
     [Header("Puzzle 6")]
 
     public GameObject crossInteractText;
@@ -151,6 +158,8 @@ public class Interact : MonoBehaviour
         inReachTorch05 = false;
         inReachTorch06 = false;
 
+        //puzzle 5
+        inReachCamp = false;
         //puzzle 6
         inReachCross = false;
         inReachHorn = false;
@@ -315,6 +324,17 @@ public class Interact : MonoBehaviour
                 torchInteractText.SetActive(true);
             }
         }
+        //puzzle 5
+        if (gameController.GetComponent<GameController>().puzzle05 == false)
+        {
+            if (other.gameObject.tag == "fireHolder")
+            {
+                inReachCamp = true;
+                campfireInteractText.SetActive(true);
+            }
+        }
+
+
         //puzzle 6
         if (gameController.GetComponent<GameController>().puzzle06 == false)
         {
@@ -525,6 +545,12 @@ public class Interact : MonoBehaviour
         {
             inReachGrave4 = false;
             graveInteractText.SetActive(false);
+        }
+        //puzzle 5
+        else if(other.gameObject.tag == "fireHolder")
+        {
+            inReachCamp = false;
+            campfireInteractText.SetActive(false);
         }
 
     }
@@ -957,6 +983,17 @@ public class Interact : MonoBehaviour
                         arrowMiddle01.SetActive(true);
                         arrowMiddlePosition = 1;
                     }
+                }
+            }
+
+            //puzzle 5 
+            if (gameController.GetComponent<GameController>().puzzle05 == false)
+            {
+                if(inReachCamp == true)
+                {
+                    campfire.SetActive(true);
+                    inReachCamp = false;
+                    campfireInteractText.SetActive(false);
                 }
             }
 

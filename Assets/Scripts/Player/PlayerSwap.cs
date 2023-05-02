@@ -16,6 +16,57 @@ public class PlayerSwap : MonoBehaviour
     public float ypos;
     public float zpos;
 
+    //puzzle 5
+    public bool onRestrictedPath;
+    public GameObject restrictInteractText;
+
+/*
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "restrict")
+        {
+            onRestrictedPath = true;
+            restrictInteractText.SetActive(true);
+        }
+
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.tag == "restrict")
+        {
+            onRestrictedPath = false;
+            restrictInteractText.SetActive(false);
+        }
+    }
+    */
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "restrict")
+        {
+            if(other.gameObject.tag != "Ground")
+            {
+                onRestrictedPath = true;
+                restrictInteractText.SetActive(true);
+            }
+            else
+            {
+                onRestrictedPath = false;
+                restrictInteractText.SetActive(false);
+            }
+        }
+
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "restrict")
+        {
+            onRestrictedPath = false;
+            restrictInteractText.SetActive(false);
+        }
+    }
+
     void Update()
     {
         //position
@@ -40,7 +91,7 @@ public class PlayerSwap : MonoBehaviour
         }
 
         //swaps  //grounded removed temporarily
-        if (Input.GetKeyDown(KeyCode.Q) /*&& GetComponent<movement>().grounded == true*/)
+        if (Input.GetKeyDown(KeyCode.Q) && onRestrictedPath != true)
         {
             if (currRealm.Equals("Dream"))
             {

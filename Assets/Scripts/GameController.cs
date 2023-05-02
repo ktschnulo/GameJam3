@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     public bool puzzle02 = false;
     public bool puzzle03 = false;
     public bool puzzle04 = false;
+    public bool puzzle05 = false;
     public bool puzzle06 = false;
     public bool completed = false;
 
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour
     public bool textOff02 = false;
     public bool textOff03 = false;
     public bool textOff04 = false;
+    public bool textOff05 = false;
     public bool textOff06 = false;
 
     //braziers
@@ -63,6 +65,9 @@ public class GameController : MonoBehaviour
     public GameObject arrowLeft;
     public GameObject arrowMiddle;
     public GameObject arrowRight;
+
+    //puzzle 5
+    public GameObject campFire;
 
     //puzzle 6
     public GameObject b1;
@@ -171,6 +176,17 @@ public class GameController : MonoBehaviour
                 puzzleFinishSFX.Play();
                 interactText.SetActive(false);
                 textOff04 = true;
+            }
+        }
+
+        //puzzle 5
+        if(campFire.activeSelf == true)
+        {
+            puzzle05 = true;
+            if(textOff06 == false)
+            {
+                puzzleFinishSFX.Play();
+                textOff06 = true;
             }
         }
 
