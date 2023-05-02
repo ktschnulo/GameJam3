@@ -64,6 +64,8 @@ TagManager:
   - CrystalPink
   - fireHolder
   - restrict
+  - watercave
+  - waterdream
   layers:
   - Default
   - TransparentFX

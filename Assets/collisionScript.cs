@@ -37,6 +37,17 @@ public class collisionScript : MonoBehaviour
             fireText.SetActive(true);
             Invoke("removeText", 3);
         }
+
+        /*parkour course reset*/
+
+        if (collision.gameObject.tag == "watercave")
+        {
+            transform.position = new Vector3(38f, -7f, 33f);
+        }
+        if (collision.gameObject.tag == "waterdream")
+        {
+            transform.position = new Vector3(37f, 142f, 35f);
+        }
     }
 
     void removeText()
